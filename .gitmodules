@@ -1,0 +1,3 @@
+[submodule "readout"]
+	path = readout
+	url = https://gitlab.cs.fau.de/watwa/joulescope-js220/readout.git
