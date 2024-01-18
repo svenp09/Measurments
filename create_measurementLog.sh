@@ -3,8 +3,7 @@ read -p "File name:" filename
 read -p "Path to programm code: " pathCode
 
 # Create folder
-projectName=${pathCode##*/}
-mkdir "${projectName}_measurment"
+mkdir "${filename}_measurement"
 
 #Search data for logfile
 cd readout
@@ -13,7 +12,7 @@ cd ..
 cd $pathCode
 code_hash=$(git rev-parse HEAD)  
 cd ..
-cd Measurements/"${projectName}_measurment"
+cd Measurements/"${filename}_measurement"
 
 
 date >>${filename/./.txt}

@@ -1,0 +1,3 @@
+[submodule "ESP_Controll/components/libHanDi"]
+	path = ESP_Controll/components/libHanDi
+	url = https://gitlab.cs.fau.de/watwa/intermittent-systems/libhandi.git

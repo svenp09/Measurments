@@ -1,0 +1,8 @@
+# Only sdkconfig is neccessary
+sdkconfig.old
+
+# Build data
+build/**
+
+# Configuration of vscode depends on host system 
+.vscode/*

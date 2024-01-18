@@ -1,0 +1,5 @@
+Readout Commit hash: 948e3b3dd3485b98023bb58bcbf2ac1c04594b5a
+Project: ESR_measurement
+Project Commit hash: 648784f341d924961682cea04937d753c8103e48
+
+Messung des ESR der 330uF Kondensatoren. Ergebnisse nicht nutzbar.

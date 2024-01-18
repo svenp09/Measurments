@@ -1,0 +1,2 @@
+Mean Delta Voltage: 69.96 mV
+Mean Drop Voltage: 40.68 mV

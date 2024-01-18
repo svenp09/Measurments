@@ -1,0 +1,467 @@
+I (213) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (223) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (235) gpio: GPIO[2]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (245) MAIN: Measurement 0 - Charging Caps...
+I (4793) MAIN: Initial Voltage: 2988 mV
+W (4829) MAIN: Min Voltage: 2928 final Voltage: 2844
+I (4829) MAIN: Measurement 0 - Charging Caps...
+I (9377) MAIN: Initial Voltage: 2838 mV
+W (9440) MAIN: Min Voltage: 2856 final Voltage: 2838
+I (9441) MAIN: Measurement 0 - Charging Caps...
+I (13988) MAIN: Initial Voltage: 2850 mV
+W (14024) MAIN: Min Voltage: 2856 final Voltage: 2850
+I (14025) MAIN: Measurement 0 - Charging Caps...
+I (18572) MAIN: Initial Voltage: 2850 mV
+W (18631) MAIN: Min Voltage: 2856 final Voltage: 2850
+I (18632) MAIN: Measurement 0 - Charging Caps...
+I (23179) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 12 mV
+Voltage Drop: 6 mV
+I (23214) MAIN: Measurement 1 - Charging Caps...
+I (27762) MAIN: Initial Voltage: 2832 mV
+W (27855) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (27856) MAIN: Measurement 1 - Charging Caps...
+I (32403) MAIN: Initial Voltage: 2898 mV
+Delta Voltage: 30 mV
+Voltage Drop: 30 mV
+I (32438) MAIN: Measurement 2 - Charging Caps...
+I (36986) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 18 mV
+Voltage Drop: 18 mV
+I (37025) MAIN: Measurement 3 - Charging Caps...
+I (41572) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 0 mV
+Voltage Drop: 18 mV
+I (41611) MAIN: Measurement 4 - Charging Caps...
+I (46158) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 12 mV
+Voltage Drop: 6 mV
+I (46196) MAIN: Measurement 5 - Charging Caps...
+I (50743) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 12 mV
+Voltage Drop: 6 mV
+I (50781) MAIN: Measurement 6 - Charging Caps...
+I (55328) MAIN: Initial Voltage: 2892 mV
+Delta Voltage: 0 mV
+Voltage Drop: 54 mV
+I (55366) MAIN: Measurement 7 - Charging Caps...
+I (59913) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (59950) MAIN: Measurement 8 - Charging Caps...
+I (64497) MAIN: Initial Voltage: 2886 mV
+Delta Voltage: 12 mV
+Voltage Drop: 36 mV
+I (64535) MAIN: Measurement 9 - Charging Caps...
+I (69082) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 24 mV
+Voltage Drop: 18 mV
+I (69120) MAIN: Measurement 10 - Charging Caps...
+I (73667) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (73705) MAIN: Measurement 11 - Charging Caps...
+I (78252) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 18 mV
+Voltage Drop: 6 mV
+I (78290) MAIN: Measurement 12 - Charging Caps...
+I (82837) MAIN: Initial Voltage: 2856 mV
+W (82875) MAIN: Min Voltage: 2838 final Voltage: 2826
+I (82876) MAIN: Measurement 12 - Charging Caps...
+I (87423) MAIN: Initial Voltage: 2868 mV
+W (87460) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (87461) MAIN: Measurement 12 - Charging Caps...
+I (92008) MAIN: Initial Voltage: 2892 mV
+Delta Voltage: 24 mV
+Voltage Drop: 30 mV
+I (92046) MAIN: Measurement 13 - Charging Caps...
+I (96593) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (96632) MAIN: Measurement 14 - Charging Caps...
+I (101179) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (101218) MAIN: Measurement 15 - Charging Caps...
+I (105765) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 12 mV
+Voltage Drop: 12 mV
+I (105804) MAIN: Measurement 16 - Charging Caps...
+I (110351) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (110389) MAIN: Measurement 17 - Charging Caps...
+I (114936) MAIN: Initial Voltage: 2868 mV
+W (114974) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (114975) MAIN: Measurement 17 - Charging Caps...
+I (119522) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 12 mV
+Voltage Drop: 12 mV
+I (119560) MAIN: Measurement 18 - Charging Caps...
+I (124107) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 18 mV
+Voltage Drop: 18 mV
+I (124144) MAIN: Measurement 19 - Charging Caps...
+I (128691) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 18 mV
+Voltage Drop: 18 mV
+I (128729) MAIN: Measurement 20 - Charging Caps...
+I (133276) MAIN: Initial Voltage: 2886 mV
+Delta Voltage: 36 mV
+Voltage Drop: 12 mV
+I (133313) MAIN: Measurement 21 - Charging Caps...
+I (137860) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 6 mV
+Voltage Drop: 18 mV
+I (137901) MAIN: Measurement 22 - Charging Caps...
+I (142449) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 12 mV
+Voltage Drop: 6 mV
+I (142487) MAIN: Measurement 23 - Charging Caps...
+I (147034) MAIN: Initial Voltage: 2892 mV
+Delta Voltage: 0 mV
+Voltage Drop: 54 mV
+I (147071) MAIN: Measurement 24 - Charging Caps...
+I (151618) MAIN: Initial Voltage: 2838 mV
+W (151686) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (151686) MAIN: Measurement 24 - Charging Caps...
+I (156234) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 12 mV
+Voltage Drop: 18 mV
+I (156271) MAIN: Measurement 25 - Charging Caps...
+I (160818) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 24 mV
+Voltage Drop: 0 mV
+I (160856) MAIN: Measurement 26 - Charging Caps...
+I (165403) MAIN: Initial Voltage: 2832 mV
+W (165475) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (165476) MAIN: Measurement 26 - Charging Caps...
+I (170023) MAIN: Initial Voltage: 2940 mV
+Delta Voltage: 78 mV
+Voltage Drop: 24 mV
+I (170058) MAIN: Measurement 27 - Charging Caps...
+I (174606) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 18 mV
+Voltage Drop: 6 mV
+I (174644) MAIN: Measurement 28 - Charging Caps...
+I (179191) MAIN: Initial Voltage: 2886 mV
+Delta Voltage: 0 mV
+Voltage Drop: 48 mV
+I (179228) MAIN: Measurement 29 - Charging Caps...
+I (183775) MAIN: Initial Voltage: 2832 mV
+W (183849) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (183849) MAIN: Measurement 29 - Charging Caps...
+I (188397) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 12 mV
+Voltage Drop: 12 mV
+I (188435) MAIN: Measurement 30 - Charging Caps...
+I (192982) MAIN: Initial Voltage: 2886 mV
+Delta Voltage: 24 mV
+Voltage Drop: 24 mV
+I (193019) MAIN: Measurement 31 - Charging Caps...
+I (197566) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 18 mV
+Voltage Drop: 24 mV
+I (197604) MAIN: Measurement 32 - Charging Caps...
+I (202151) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (202189) MAIN: Measurement 33 - Charging Caps...
+I (206736) MAIN: Initial Voltage: 2886 mV
+Delta Voltage: 36 mV
+Voltage Drop: 12 mV
+I (206774) MAIN: Measurement 34 - Charging Caps...
+I (211321) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 30 mV
+Voltage Drop: 0 mV
+I (211359) MAIN: Measurement 35 - Charging Caps...
+I (215906) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 24 mV
+Voltage Drop: 6 mV
+I (215944) MAIN: Measurement 36 - Charging Caps...
+I (220491) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 12 mV
+Voltage Drop: 30 mV
+I (220528) MAIN: Measurement 37 - Charging Caps...
+I (225075) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 6 mV
+Voltage Drop: 12 mV
+I (225115) MAIN: Measurement 38 - Charging Caps...
+I (229663) MAIN: Initial Voltage: 2850 mV
+W (229701) MAIN: Min Voltage: 2838 final Voltage: 2820
+I (229702) MAIN: Measurement 38 - Charging Caps...
+I (234249) MAIN: Initial Voltage: 2856 mV
+W (234286) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (234287) MAIN: Measurement 38 - Charging Caps...
+I (238834) MAIN: Initial Voltage: 2826 mV
+W (238914) MAIN: Min Voltage: 2838 final Voltage: 2826
+I (238915) MAIN: Measurement 38 - Charging Caps...
+I (243463) MAIN: Initial Voltage: 2934 mV
+Delta Voltage: 78 mV
+Voltage Drop: 18 mV
+I (243498) MAIN: Measurement 39 - Charging Caps...
+I (248046) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 0 mV
+Voltage Drop: 18 mV
+I (248083) MAIN: Measurement 40 - Charging Caps...
+I (252630) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 6 mV
+Voltage Drop: 18 mV
+I (252669) MAIN: Measurement 41 - Charging Caps...
+I (257216) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 12 mV
+Voltage Drop: 30 mV
+I (257253) MAIN: Measurement 42 - Charging Caps...
+I (261800) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 30 mV
+Voltage Drop: 0 mV
+I (261838) MAIN: Measurement 43 - Charging Caps...
+I (266385) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 6 mV
+Voltage Drop: 24 mV
+I (266423) MAIN: Measurement 44 - Charging Caps...
+I (270970) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 24 mV
+Voltage Drop: 18 mV
+I (271008) MAIN: Measurement 45 - Charging Caps...
+I (275555) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 42 mV
+Voltage Drop: 0 mV
+I (275593) MAIN: Measurement 46 - Charging Caps...
+I (280140) MAIN: Initial Voltage: 2868 mV
+W (280177) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (280178) MAIN: Measurement 46 - Charging Caps...
+I (284725) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 12 mV
+Voltage Drop: 6 mV
+I (284772) MAIN: Measurement 47 - Charging Caps...
+I (289320) MAIN: Initial Voltage: 2850 mV
+Delta Voltage: 6 mV
+Voltage Drop: 6 mV
+I (289357) MAIN: Measurement 48 - Charging Caps...
+I (293904) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (293942) MAIN: Measurement 49 - Charging Caps...
+I (298489) MAIN: Initial Voltage: 2856 mV
+W (298526) MAIN: Min Voltage: 2838 final Voltage: 2826
+I (298527) MAIN: Measurement 49 - Charging Caps...
+I (303074) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (303111) MAIN: Measurement 50 - Charging Caps...
+I (307658) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 24 mV
+Voltage Drop: 0 mV
+I (307696) MAIN: Measurement 51 - Charging Caps...
+I (312243) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 12 mV
+Voltage Drop: 18 mV
+I (312282) MAIN: Measurement 52 - Charging Caps...
+I (316829) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 24 mV
+Voltage Drop: 18 mV
+I (316867) MAIN: Measurement 53 - Charging Caps...
+I (321414) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 0 mV
+Voltage Drop: 30 mV
+I (321451) MAIN: Measurement 54 - Charging Caps...
+I (325998) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (326040) MAIN: Measurement 55 - Charging Caps...
+I (330588) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 24 mV
+Voltage Drop: 0 mV
+I (330626) MAIN: Measurement 56 - Charging Caps...
+I (335172) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 24 mV
+Voltage Drop: 6 mV
+I (335210) MAIN: Measurement 57 - Charging Caps...
+I (339757) MAIN: Initial Voltage: 2850 mV
+W (339796) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (339797) MAIN: Measurement 57 - Charging Caps...
+I (344345) MAIN: Initial Voltage: 2868 mV
+W (344382) MAIN: Min Voltage: 2838 final Voltage: 2832
+I (344383) MAIN: Measurement 57 - Charging Caps...
+I (348930) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 6 mV
+Voltage Drop: 0 mV
+I (348967) MAIN: Measurement 58 - Charging Caps...
+I (353514) MAIN: Initial Voltage: 2814 mV
+W (353620) MAIN: Min Voltage: 2832 final Voltage: 2808
+I (353621) MAIN: Measurement 58 - Charging Caps...
+I (358167) MAIN: Initial Voltage: 2832 mV
+Delta Voltage: 0 mV
+Voltage Drop: 0 mV
+I (358235) MAIN: Measurement 59 - Charging Caps...
+I (362783) MAIN: Initial Voltage: 2928 mV
+Delta Voltage: 60 mV
+Voltage Drop: 36 mV
+I (362818) MAIN: Measurement 60 - Charging Caps...
+I (367366) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 6 mV
+Voltage Drop: 48 mV
+I (367404) MAIN: Measurement 61 - Charging Caps...
+I (371951) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 6 mV
+Voltage Drop: 18 mV
+I (371989) MAIN: Measurement 62 - Charging Caps...
+I (376536) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 36 mV
+Voltage Drop: 0 mV
+I (376575) MAIN: Measurement 63 - Charging Caps...
+I (381122) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 18 mV
+Voltage Drop: 42 mV
+I (381158) MAIN: Measurement 64 - Charging Caps...
+I (385706) MAIN: Initial Voltage: 2826 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (385768) MAIN: Measurement 65 - Charging Caps...
+I (390316) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 48 mV
+Voltage Drop: 12 mV
+I (390353) MAIN: Measurement 66 - Charging Caps...
+I (394900) MAIN: Initial Voltage: 2826 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (394968) MAIN: Measurement 67 - Charging Caps...
+I (399516) MAIN: Initial Voltage: 2850 mV
+Delta Voltage: 30 mV
+Voltage Drop: 0 mV
+I (399554) MAIN: Measurement 68 - Charging Caps...
+I (404101) MAIN: Initial Voltage: 2892 mV
+Delta Voltage: 24 mV
+Voltage Drop: 48 mV
+I (404138) MAIN: Measurement 69 - Charging Caps...
+I (408685) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 6 mV
+Voltage Drop: 18 mV
+I (408729) MAIN: Measurement 70 - Charging Caps...
+I (413276) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 6 mV
+Voltage Drop: 54 mV
+I (413311) MAIN: Measurement 71 - Charging Caps...
+I (417859) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 6 mV
+Voltage Drop: 36 mV
+I (417897) MAIN: Measurement 72 - Charging Caps...
+I (422444) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 24 mV
+Voltage Drop: 36 mV
+I (422482) MAIN: Measurement 73 - Charging Caps...
+I (427029) MAIN: Initial Voltage: 2826 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (427128) MAIN: Measurement 74 - Charging Caps...
+I (431674) MAIN: Initial Voltage: 2994 mV
+Delta Voltage: 156 mV
+Voltage Drop: 18 mV
+I (431711) MAIN: Measurement 75 - Charging Caps...
+I (436257) MAIN: Initial Voltage: 2898 mV
+Delta Voltage: 48 mV
+Voltage Drop: 30 mV
+I (436296) MAIN: Measurement 76 - Charging Caps...
+I (440844) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (440884) MAIN: Measurement 77 - Charging Caps...
+I (445432) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 0 mV
+Voltage Drop: 54 mV
+I (445467) MAIN: Measurement 78 - Charging Caps...
+I (450015) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 18 mV
+Voltage Drop: 18 mV
+I (450053) MAIN: Measurement 79 - Charging Caps...
+I (454600) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 18 mV
+Voltage Drop: 6 mV
+I (454638) MAIN: Measurement 80 - Charging Caps...
+I (459185) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (459222) MAIN: Measurement 81 - Charging Caps...
+I (463769) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (463816) MAIN: Measurement 82 - Charging Caps...
+I (468364) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 0 mV
+Voltage Drop: 36 mV
+I (468401) MAIN: Measurement 83 - Charging Caps...
+I (472948) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 30 mV
+Voltage Drop: 24 mV
+I (472985) MAIN: Measurement 84 - Charging Caps...
+I (477532) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 0 mV
+Voltage Drop: 42 mV
+I (477570) MAIN: Measurement 85 - Charging Caps...
+I (482117) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (482159) MAIN: Measurement 86 - Charging Caps...
+I (486707) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 12 mV
+Voltage Drop: 24 mV
+I (486745) MAIN: Measurement 87 - Charging Caps...
+I (491292) MAIN: Initial Voltage: 2856 mV
+W (491329) MAIN: Min Voltage: 2820 final Voltage: 2814
+I (491330) MAIN: Measurement 87 - Charging Caps...
+I (495877) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 36 mV
+Voltage Drop: 18 mV
+I (495915) MAIN: Measurement 88 - Charging Caps...
+I (500462) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 42 mV
+Voltage Drop: 18 mV
+I (500499) MAIN: Measurement 89 - Charging Caps...
+I (505046) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 6 mV
+Voltage Drop: 30 mV
+I (505084) MAIN: Measurement 90 - Charging Caps...
+I (509631) MAIN: Initial Voltage: 2880 mV
+Delta Voltage: 24 mV
+Voltage Drop: 36 mV
+I (509668) MAIN: Measurement 91 - Charging Caps...
+I (514215) MAIN: Initial Voltage: 2820 mV
+W (514304) MAIN: Min Voltage: 2820 final Voltage: 2814
+I (514304) MAIN: Measurement 91 - Charging Caps...
+I (518852) MAIN: Initial Voltage: 2994 mV
+Delta Voltage: 156 mV
+Voltage Drop: 18 mV
+I (518887) MAIN: Measurement 92 - Charging Caps...
+I (523435) MAIN: Initial Voltage: 2826 mV
+Delta Voltage: 0 mV
+Voltage Drop: 6 mV
+I (523473) MAIN: Measurement 93 - Charging Caps...
+I (528020) MAIN: Initial Voltage: 2874 mV
+Delta Voltage: 0 mV
+Voltage Drop: 54 mV
+I (528057) MAIN: Measurement 94 - Charging Caps...
+I (532604) MAIN: Initial Voltage: 2862 mV
+Delta Voltage: 18 mV
+Voltage Drop: 24 mV
+I (532642) MAIN: Measurement 95 - Charging Caps...
+I (537189) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (537238) MAIN: Measurement 96 - Charging Caps...
+I (541786) MAIN: Initial Voltage: 2856 mV
+Delta Voltage: 36 mV
+Voltage Drop: 0 mV
+I (541824) MAIN: Measurement 97 - Charging Caps...
+I (546371) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 30 mV
+Voltage Drop: 18 mV
+I (546409) MAIN: Measurement 98 - Charging Caps...
+I (550956) MAIN: Initial Voltage: 2844 mV
+Delta Voltage: 0 mV
+Voltage Drop: 24 mV
+I (550996) MAIN: Measurement 99 - Charging Caps...
+I (555544) MAIN: Initial Voltage: 2868 mV
+Delta Voltage: 12 mV
+Voltage Drop: 36 mV
+I (555581) MAIN: Measurement complete after: 555 s
