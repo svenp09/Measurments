@@ -33,7 +33,7 @@ static const char* TAG = "MAIN";
 
 /* Private constants ******************************************************/
 const TickType_t tt_Delay_ms = pdMS_TO_TICKS(2); 
-const TickType_t chargingTime_ms = pdMS_TO_TICKS(8000);
+const TickType_t chargingTime_ms = pdMS_TO_TICKS(2000);
 /* Private macros *********************************************************/
 
 /* Private typedefs *******************************************************/
@@ -164,7 +164,7 @@ void measure_voltagedrop()
             nStartVMeasurements++;
         }
         syncSignal = false; 
-        ESP_LOGI(TAG, "N StartV: %u",  nStartVMeasurements); 
+        ESP_LOGD(TAG, "N StartV: %u",  nStartVMeasurements); 
         // Measure starting conditions
         delay(210);
         int64_t startTimeTask = esp_timer_get_time();
@@ -200,11 +200,12 @@ void measure_voltagedrop()
             
         }
         
-        ESP_LOGI(TAG, "Number of Measurements during execution: %u",nMeasurements);
+        ESP_LOGD(TAG, "Number of Measurements during execution: %u",nMeasurements);
         uint32_t voltageDrop_mV = 0;
         if(minVoltage_mV<=finalVoltage_mV && startVoltage_mV>=finalVoltage_mV) {
             voltageDrop_mV = finalVoltage_mV - minVoltage_mV;
-            printf("Delta Voltage: %lu mV\n", startVoltage_mV-finalVoltage_mV); 
+            printf("Start Voltage: %lu mV\n", startVoltage_mV); 
+            printf("Final Voltage: %lu mV\n", finalVoltage_mV); 
             printf("Voltage Drop: %lu mV\n", voltageDrop_mV); 
         }
         else if (finalVoltage_mV<minVoltage_mV)
@@ -214,7 +215,7 @@ void measure_voltagedrop()
         }
         else if (startVoltage_mV<finalVoltage_mV)
         {
-            ESP_LOGW(TAG, "Start voltage: %lu - final Voltage: %lu",startVoltage_mV, finalVoltage_mV); 
+            //ESP_LOGW(TAG, "Start voltage: %lu - final Voltage: %lu",startVoltage_mV, finalVoltage_mV); 
             i--;
         }
         
