@@ -5,6 +5,7 @@
 #include "freertos/timers.h"
 #include "driver/gpio.h"
 #include "esp_sleep.h"
+#include "esp_intr_alloc.h"
 
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
 #include "esp_log.h"
@@ -32,7 +33,7 @@ static const char* TAG = "MAIN";
 
 /* Private constants ******************************************************/
 const TickType_t tt_Delay_ms = pdMS_TO_TICKS(2); 
-const TickType_t chargingTime_ms = pdMS_TO_TICKS(16000);
+const TickType_t chargingTime_ms = pdMS_TO_TICKS(8000);
 /* Private macros *********************************************************/
 
 /* Private typedefs *******************************************************/
@@ -43,27 +44,32 @@ void sendGPIOPulseBlocking(uint16_t us_duration_ms);
 
 /* Private variables ******************************************************/
 TimerHandle_t xTimer1;
-uint32_t minVoltage_mV = UINT32_MAX;
-uint32_t dropVoltage_mV = UINT32_MAX;
+
+
+gpio_isr_handle_t syncISRHandle;
+
+volatile bool syncSignal =false;
 
 /* Public functions *******************************************************/
 
 /* Private functions ******************************************************/
 void measure_adc();
 void measure_voltagedrop();
-bool prv_createSWTimer(void);
-bool prv_startSWTimer(void);
+void isrSynchandker(void *arg){
+    syncSignal = true;
+}
 
 void app_main(void)
 {   
     esp_log_level_set(TAG, ESP_LOG_INFO);
+
+    
     
 
 
     #if defined(VOLTAGE_DROP_MEASUREMENT)
 
     energyunit_init();
-    prv_createSWTimer();
     measure_voltagedrop();
     
     #elif defined(VOLTAGE_MEASUREMENT)
@@ -95,77 +101,106 @@ void measure_adc()
 
 }
 
+void sendSyncSignal()
+{
+
+}
 void measure_voltagedrop()
 {
     esp_log_level_set(TAG, ESP_LOG_INFO);
-    uint32_t startVoltage_mV = 0; 
-    uint32_t finalVoltage_mV = 0;
-    
+    uint32_t startVoltage_mV; 
+    uint32_t finalVoltage_mV;
+    uint32_t measuredVoltage_mV;
+    uint32_t minVoltage_mV;
+    uint16_t nMeasurements;
+    uint16_t nStartVMeasurements;
     //Initialize GPIOs
-    gpio_set_direction(GPIO_SYNC_SIG, GPIO_MODE_INPUT); // GPIO for state signaling
-    gpio_set_pull_mode(GPIO_SYNC_SIG, GPIO_PULLDOWN_ONLY);
+   
 
     gpio_set_direction(GPIO_CHARGE, GPIO_MODE_OUTPUT);
     gpio_set_direction(GPIO_POWER_ON, GPIO_MODE_OUTPUT);
 
+
+    // Set up interrupt
+    gpio_set_direction(GPIO_SYNC_SIG, GPIO_MODE_INPUT); // GPIO for state signaling
+    gpio_set_pull_mode(GPIO_SYNC_SIG, GPIO_PULLDOWN_ONLY);
+    gpio_set_intr_type(GPIO_SYNC_SIG, GPIO_INTR_POSEDGE);
+    //gpio_install_isr_service(ESP_INTR_FLAG_NMI);
+    
+    gpio_isr_handler_add(GPIO_SYNC_SIG, isrSynchandker, NULL);
+
+    // Measure total evaluation time 
     int64_t startTimeEval = esp_timer_get_time();
     for(int i = 0 ; i <100; i++)
     {
-    // Charge Caps
-    ESP_LOGI(TAG, "Measurement %i - Charging Caps...", i);
-    gpio_set_level(GPIO_POWER_ON,0);
-    gpio_set_level(GPIO_CHARGE,1);
-    vTaskDelay(chargingTime_ms);
-    gpio_set_level(GPIO_CHARGE,0);
 
-    // Power ESP on
-    gpio_set_level(GPIO_POWER_ON,1);
-
-    /*ESP_LOGD(TAG, "Waiting for boot up...");
-    while(true)
-    {
-        if(1 == gpio_get_level(GPIO_SYNC_SIG))
-        {
-            break;
-        }
-    }*/
-        energyunit_measureVoltage();
-    
-
-       // Wait for start signal  
-       minVoltage_mV = UINT32_MAX;
+        // Reset values
+        startVoltage_mV = 0; 
+        finalVoltage_mV = 0;
+        measuredVoltage_mV = UINT32_MAX;
+        minVoltage_mV = UINT32_MAX;
+        nMeasurements = 0;
+        nStartVMeasurements = 0;
         
-        ESP_LOGD(TAG, "Waiting for signal...");
 
-        while(0 == gpio_get_level(GPIO_SYNC_SIG)); 
-        delay(310);
+        // Charge Caps
+        ESP_LOGI(TAG, "Measurement %i - Charging Caps...", i);
+        gpio_set_level(GPIO_POWER_ON,0);
+        gpio_set_level(GPIO_CHARGE,1);
+        vTaskDelay(chargingTime_ms);
+        gpio_set_level(GPIO_CHARGE,0);
+
+        // Power ESP on
+        gpio_set_level(GPIO_POWER_ON,1);
+
+        syncSignal = false; 
+        startVoltage_mV = energyunit_measureVoltage();
+
+        // Wait for start signal  
+        //ESP_LOGD(TAG, "Waiting for signal...");
+        while(!syncSignal)
+        {
+            startVoltage_mV = energyunit_measureVoltage();
+            nStartVMeasurements++;
+        }
+        syncSignal = false; 
+        ESP_LOGI(TAG, "N StartV: %u",  nStartVMeasurements); 
+        // Measure starting conditions
+        delay(210);
         int64_t startTimeTask = esp_timer_get_time();
         
-        startVoltage_mV = energyunit_measureVoltage();
         ESP_LOGD(TAG, "Initial Voltage: %lu mV",  startVoltage_mV); 
         
-        prv_startSWTimer();
         
-        while(0 == gpio_get_level(GPIO_SYNC_SIG))
+
+        while(!syncSignal)
         {
-            /*if(esp_timer_get_time-startTimeTask>TIMEOUT_TASK_us)
+            // Measure minimal voltage for voltage drop
+            uint32_t measuredVoltage_mV = energyunit_measureVoltage();
+            if(measuredVoltage_mV<minVoltage_mV)
             {
-                ESP_LOGW(TAG,"Did not catch stop signal");
-                break;
-            }*/
-        }  
+                minVoltage_mV = measuredVoltage_mV;
+            }
+            nMeasurements++;
+        }
+        syncSignal = false;
         
-        xTimerStop(xTimer1,0);
-        vTaskDelay(pdMS_TO_TICKS(25));
+        
+        
         finalVoltage_mV = energyunit_measureVoltage();
         int errCnt = 0;
-        while(startVoltage_mV<finalVoltage_mV)
+        int64_t startMeasureFinalV = esp_timer_get_time();
+        while(esp_timer_get_time()-startMeasureFinalV < 25000)
         {
-            finalVoltage_mV = energyunit_measureVoltage();
-            if(errCnt>10)
-            {break;}
+            measuredVoltage_mV = energyunit_measureVoltage();
+            if(measuredVoltage_mV > finalVoltage_mV)
+            {
+                finalVoltage_mV = measuredVoltage_mV;
+            }
+            
         }
         
+        ESP_LOGI(TAG, "Number of Measurements during execution: %u",nMeasurements);
         uint32_t voltageDrop_mV = 0;
         if(minVoltage_mV<=finalVoltage_mV && startVoltage_mV>=finalVoltage_mV) {
             voltageDrop_mV = finalVoltage_mV - minVoltage_mV;
@@ -179,7 +214,7 @@ void measure_voltagedrop()
         }
         else if (startVoltage_mV<finalVoltage_mV)
         {
-            ESP_LOGW(TAG, "final Voltage: %lu", finalVoltage_mV); 
+            ESP_LOGW(TAG, "Start voltage: %lu - final Voltage: %lu",startVoltage_mV, finalVoltage_mV); 
             i--;
         }
         
@@ -189,47 +224,3 @@ void measure_voltagedrop()
 }
 
 
-void prv_TimerCallbackFunction(TimerHandle_t pxTimer)
-{
-    ESP_LOGV(TAG,"MeasuringTime");
-    uint32_t measuredVoltage_mV = energyunit_measureVoltage();
-    if(measuredVoltage_mV<minVoltage_mV)
-    {
-        minVoltage_mV = measuredVoltage_mV;
-    }
-}
-
-bool prv_createSWTimer(void)
-{
-    bool timerCreated = false;
-    xTimer1 = xTimerCreate("Timer 1",     // Just a text name, not used by the kernel.
-                tt_Delay_ms,    // The timer period in ticks.
-                pdTRUE,        // The timer will auto-reload themselves when they expire.
-                ( void * ) 0,           // Timer identifier.
-               prv_TimerCallbackFunction); // Callback function
-    
-    if( xTimer1 == NULL )
-    {
-        ESP_LOGE(TAG,"Timer was not created!");
-    }
-    else
-    {
-        timerCreated = true;
-    }
-    return timerCreated;
-}
-
-bool prv_startSWTimer(void)
-{
-    bool timerOK = false; 
-    if( xTimerStart( xTimer1, 0 ) != pdPASS )
-    {
-        ESP_LOGE(TAG,"The timer could not be set into the Active state.");
-    }
-    else
-    {
-        ESP_LOGV(TAG,"The timer was set into Active state.");
-        timerOK = true; 
-    }
-    return timerOK;
-}
