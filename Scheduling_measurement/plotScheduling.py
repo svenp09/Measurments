@@ -117,7 +117,7 @@ def main():
     rise = np.where(np.convolve(trig, [1, -1]) == 1)
     rise = rise[0]
 
-    regInterest = np.array([rise[0]-200,rise[1]+200])
+    regInterest = np.array([rise[0]-200,rise[0]+4000])
 
 
 
