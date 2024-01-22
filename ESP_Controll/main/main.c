@@ -23,8 +23,9 @@ static const char* TAG = "MAIN";
 
 #define TIMEOUT_TASK_us 10000
 
-#define VOLTAGE_DROP_MEASUREMENT
+//#define VOLTAGE_DROP_MEASUREMENT
 //#define VOLTAGE_MEASUREMENT
+#define SCHEDULING_MEASUREMENT
 
 // GPIOs
 #define GPIO_SYNC_SIG GPIO_NUM_3
@@ -33,7 +34,7 @@ static const char* TAG = "MAIN";
 
 /* Private constants ******************************************************/
 const TickType_t tt_Delay_ms = pdMS_TO_TICKS(2); 
-const TickType_t chargingTime_ms = pdMS_TO_TICKS(2000);
+const TickType_t chargingTime_ms = pdMS_TO_TICKS(5000);
 /* Private macros *********************************************************/
 
 /* Private typedefs *******************************************************/
@@ -55,17 +56,15 @@ volatile bool syncSignal =false;
 /* Private functions ******************************************************/
 void measure_adc();
 void measure_voltagedrop();
-void isrSynchandker(void *arg){
+void measure_scheduling();
+
+void isrSyncHandler(void *arg){
     syncSignal = true;
 }
 
 void app_main(void)
 {   
     esp_log_level_set(TAG, ESP_LOG_INFO);
-
-    
-    
-
 
     #if defined(VOLTAGE_DROP_MEASUREMENT)
 
@@ -76,6 +75,11 @@ void app_main(void)
 
     continuous_adc_init();
     measure_adc();
+
+    #elif defined(SCHEDULING_MEASUREMENT)
+
+    energyunit_init();
+    measure_scheduling();
 
     #endif
     
@@ -101,13 +105,10 @@ void measure_adc()
 
 }
 
-void sendSyncSignal()
-{
 
-}
 void measure_voltagedrop()
 {
-    esp_log_level_set(TAG, ESP_LOG_INFO);
+    esp_log_level_set(TAG, ESP_LOG_DEBUG);
     uint32_t startVoltage_mV; 
     uint32_t finalVoltage_mV;
     uint32_t measuredVoltage_mV;
@@ -127,7 +128,7 @@ void measure_voltagedrop()
     gpio_set_intr_type(GPIO_SYNC_SIG, GPIO_INTR_POSEDGE);
     //gpio_install_isr_service(ESP_INTR_FLAG_NMI);
     
-    gpio_isr_handler_add(GPIO_SYNC_SIG, isrSynchandker, NULL);
+    gpio_isr_handler_add(GPIO_SYNC_SIG, isrSyncHandler, NULL);
 
     // Measure total evaluation time 
     int64_t startTimeEval = esp_timer_get_time();
@@ -157,7 +158,7 @@ void measure_voltagedrop()
         startVoltage_mV = energyunit_measureVoltage();
 
         // Wait for start signal  
-        //ESP_LOGD(TAG, "Waiting for signal...");
+        ESP_LOGD(TAG, "Waiting for signal...");
         while(!syncSignal)
         {
             startVoltage_mV = energyunit_measureVoltage();
@@ -225,3 +226,91 @@ void measure_voltagedrop()
 }
 
 
+void measure_scheduling()
+{
+    esp_log_level_set(TAG, ESP_LOG_DEBUG);
+   
+    //Initialize GPIOs
+    gpio_set_direction(GPIO_CHARGE, GPIO_MODE_OUTPUT);
+    gpio_set_direction(GPIO_POWER_ON, GPIO_MODE_OUTPUT);
+
+
+    // Set up interrupt
+    gpio_set_direction(GPIO_SYNC_SIG, GPIO_MODE_INPUT); // GPIO for state signaling
+    gpio_set_pull_mode(GPIO_SYNC_SIG, GPIO_PULLDOWN_ONLY);
+    gpio_set_intr_type(GPIO_SYNC_SIG, GPIO_INTR_POSEDGE);
+    //gpio_install_isr_service(ESP_INTR_FLAG_NMI);
+    
+    gpio_isr_handler_add(GPIO_SYNC_SIG, isrSyncHandler, NULL);
+
+    // Measure total evaluation time 
+    int64_t startTimeEval = esp_timer_get_time();
+    for(int i = 0 ; i <100; i++)
+    {
+
+        // Charge Caps
+        ESP_LOGI(TAG, "Measurement %i - Charging Caps...", i);
+        gpio_set_level(GPIO_POWER_ON,0);
+        gpio_set_level(GPIO_CHARGE,1);
+        vTaskDelay(chargingTime_ms);
+        gpio_set_level(GPIO_CHARGE,0);
+
+        // Power ESP on
+        gpio_set_level(GPIO_POWER_ON,1);
+
+        syncSignal = false; 
+
+        // Wait for start signal  
+        ESP_LOGD(TAG, "Waiting for signal...");
+        while(!syncSignal)
+        {
+
+        }
+        syncSignal = false; 
+        ESP_LOGD(TAG, "Scheduling Started"); 
+
+        while(!syncSignal)
+        {
+
+        }
+        syncSignal = false; 
+        ESP_LOGD(TAG, "Execution Started");
+
+        // Measure starting conditions
+        int64_t startTimeTask = esp_timer_get_time();
+        
+        
+        while(!syncSignal)
+        {
+   
+        }
+        syncSignal = false;
+        
+        //ESP_LOGD(TAG, "Finished 1st Task");
+
+        while(!syncSignal)
+        {
+   
+        }
+        syncSignal = false;
+        
+        //ESP_LOGD(TAG, "Finished 2nd Task");
+
+        while(!syncSignal)
+        {
+   
+        }
+        syncSignal = false;
+        
+        ESP_LOGD(TAG, "Finished 3rd Task");
+        
+        int64_t startMeasureFinalT = esp_timer_get_time();
+
+        ESP_LOGD(TAG, "Finished schedule after %lli us", startMeasureFinalT-startTimeTask);
+        delay(3000000);
+       
+        
+    }
+    int64_t taskTime_us = esp_timer_get_time() - startTimeEval;
+    ESP_LOGI(TAG, "Measurement complete after: %lli s", taskTime_us/1000000); 
+}
